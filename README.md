@@ -11,3 +11,6 @@ Pythonとpandasを用いたデータ解析練習。
 - DataFrameの操作
 - describe()による統計量表示
 - Pythonでのデータ処理基礎
+
+## Visualization
+- matplotlibを用いて棒グラフを作成。
