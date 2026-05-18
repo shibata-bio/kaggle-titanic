@@ -1,15 +1,6 @@
 import pandas as pd
 
-data = {
+df = pd.read_csv("sample.csv")
 
-    "Name": ["Alice", "Bob", "Charlie"],
-
-    "Score": [85, 92, 78]
-
-}
-
-df = pd.DataFrame(data)
-
-print(df)
-
+print(df.head())
 print(df.describe())
