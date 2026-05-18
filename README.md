@@ -9,4 +9,5 @@ Pythonとpandasを用いたデータ解析練習。
 
 ## What I Learned
 - DataFrameの操作
-- データの基本統計量表示# kaggle-titanic
+- describe()による統計量表示
+- Pythonでのデータ処理基礎
