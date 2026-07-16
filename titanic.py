@@ -63,4 +63,11 @@ plt.ylabel("Feature")
 
 plt.title("Feature Importance")
 
+import os
+
+os.makedirs("images", exist_ok=True)
+
+plt.tight_layout()
+plt.savefig("images/feature_importance.png", dpi=300)
+
 plt.show()
