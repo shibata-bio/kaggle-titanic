@@ -1,12 +1,15 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from pathlib import Path
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # データ読み込み
-df = pd.read_csv("train.csv")
+df = pd.read_csv(BASE_DIR / "data" / "train.csv")
 
 # 欠損値処理
 df["Age"] = df["Age"].fillna(df["Age"].mean())
@@ -18,8 +21,6 @@ df["Embarked"] = df["Embarked"].map({"S": 0, "C": 1, "Q": 2})
 
 # 特徴量
 X = df[["Pclass", "Sex", "Age", "Fare", "Embarked"]]
-
-# 正解データ
 y = df["Survived"]
 
 # 学習データとテストデータに分割
@@ -30,16 +31,12 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-# モデル作成
+# モデル作成・学習
 model = RandomForestClassifier(random_state=42)
-
-# 学習
 model.fit(X_train, y_train)
 
-# 予測
+# 予測・評価
 predictions = model.predict(X_test)
-
-# 精度表示
 accuracy = accuracy_score(y_test, predictions)
 
 print("Accuracy:", accuracy)
@@ -48,26 +45,23 @@ print("Accuracy:", accuracy)
 importance = pd.DataFrame({
     "Feature": X.columns,
     "Importance": model.feature_importances_
-})
-
-# 重要度順に並び替え
-importance = importance.sort_values(by="Importance")
+}).sort_values(by="Importance")
 
 print(importance)
 
 # グラフ化
+plt.figure(figsize=(8, 5))
 plt.barh(importance["Feature"], importance["Importance"])
-
 plt.xlabel("Importance")
 plt.ylabel("Feature")
-
 plt.title("Feature Importance")
-
-import os
-
-os.makedirs("images", exist_ok=True)
-
 plt.tight_layout()
-plt.savefig("images/feature_importance.png", dpi=300)
 
+# 保存
+output_path = BASE_DIR / "images" / "feature_importance.png"
+output_path.parent.mkdir(exist_ok=True)
+
+plt.savefig(output_path, dpi=300, bbox_inches="tight")
 plt.show()
+
+print("Saved:", output_path)
