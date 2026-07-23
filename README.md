@@ -49,23 +49,13 @@ The project demonstrates a complete data science workflow including data preproc
 ## 📂 Project Structure
 
 ```text
-kaggle-titanic/
+kaggle-titanic
 │
-├── data/
-│   ├── train.csv
-│   └── sample.csv
-│
-├── images/
-│   ├── workflow.png
-│   ├── feature_importance.png
-│   └── eda.png
-│
-├── src/
-│   ├── practice.py
-│   ├── graph.py
-│   └── titanic.py
-│
-├── requirements.txt
+├── images
+├── graph.py
+├── practice.py
+├── sample.csv
+├── titanic.py
 └── README.md
 ```
 
@@ -90,21 +80,22 @@ git clone https://github.com/shibata-bio/kaggle-titanic.git
 
 cd kaggle-titanic
 
-pip install -r requirements.txt
+pip install pandas matplotlib scikit-learn
 
-python src/titanic.py
+python titanic.py
 ```
 
 ---
 
-## 📊 Result
+## 📊 Results
 
-**Accuracy**
-
-```
-0.80
-```
-
+- Model: Random Forest Classifier
+- Kaggle Public Score: **0.79888**
+- Most Important Features:
+  - Fare
+  - Sex
+  - Age
+    
 ### Feature Importance
 
 <p align="center">
@@ -115,12 +106,11 @@ python src/titanic.py
 
 ## 📖 What I Learned
 
-- Importance of data preprocessing
-- Handling missing values
-- Feature engineering for machine learning
-- Model evaluation using train/test split
-- Interpreting Feature Importance
-- Building an end-to-end machine learning workflow
+- Built an end-to-end machine learning pipeline
+- Learned to preprocess real-world datasets
+- Improved feature engineering skills
+- Evaluated machine learning models using train/test split
+- Interpreted model behavior through feature importance analysis
 
 ---
 
@@ -134,6 +124,12 @@ python src/titanic.py
 
 ---
 
-## 📄 License
+## 👤 Author
 
-This project is licensed under the MIT License.
+**Suguru Shibata**
+
+- M.S. Student, Hiroshima University
+- Interested in Data Science, Machine Learning, and Cloud Computing.
+
+GitHub:
+https://github.com/shibata-bio
